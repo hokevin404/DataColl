@@ -249,3 +249,26 @@ let objToAddAtEnd = { id: "7", name: "Bilbo", occupation: "None", age: "111" };
 finalArr.push(objToAddAtEnd);
 console.log(finalArr);
 
+
+// Part 5: Full Circle
+// As a final task, transform the final set of data back into CSV format.
+// There are a number of ways to do this; be creative!
+// Once complete, be sure to submit your work according to the submission instructions at the beginning of this document.
+let finalStr = '';
+let tempStr = [];
+
+// Store names of keys into temp variable called headings
+let headings = Object.keys(finalArr[0]);
+// Convert heading object into a string with the new-line character concantenated at the end
+finalStr = headings.toString() + '\n';
+//console.log(finalStr);
+
+// For loop to iterate through objects and convert them to strings and then add them to a variable to hold 
+for(let x = 0; x < columns; x++)
+{
+    //console.log(Object.values(finalArr[x]))
+    tempStr = Object.values(finalArr[x]).toString();
+    //console.log(tempStr);
+    finalStr += tempStr + '\n';
+}
+console.log(finalStr)
