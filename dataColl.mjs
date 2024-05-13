@@ -77,13 +77,24 @@ let myArr = [];
 let storedArr = [];
 let counter = 0;
 
+// Get number of columns from index 0
 columns = getColumns(stringOfCSV);
-//console.log(columns);
 
+// Loop through CSV string by character
 for(let x of stringOfCSV)
 {
+    // Switch statement for each char encountered
     switch(x)
     {
+        // When new-line char encountered:
+        //  1) add word to temp array
+        //  2) re-initialize variable str to empty
+        //  3) increment counter to keep track how far long into CSV string
+        //  4) if the cell's column is not greater than total columns of table:
+        //      4a) push to final array
+        //      4b) decrement columns value to keep track of cell's column
+        //  5) re-initialize temp array to empty
+        //  6) break to next loop iteration
         case('\n'):
         {
             myArr.push(str);
@@ -98,6 +109,11 @@ for(let x of stringOfCSV)
             myArr = [];
             break;
         }
+        // When comma char encountered:
+        // 1) increment counter to keep track how far long into CSV string
+        // 2) add word to temp array
+        // 3) re-initialize variable str to empty
+        // 4) break to next loop iteration
         case(','):
         {
             counter++;
@@ -105,6 +121,10 @@ for(let x of stringOfCSV)
             str = ``;
             break;
         }
+        // When encountering other char that is not a comma or new-line char:
+        // 1) add letter to str variable
+        // 2) increment counter to keep track how far long into CSV string
+        // 3) break to next loop iteration
         default:
         {
             str+=x;
@@ -113,6 +133,9 @@ for(let x of stringOfCSV)
         }
     }
 
+    // If counter (how far along csv string) is equal to the length of CSV length
+    // Add word to temp array
+    // Add temp array to final array
     if(counter === stringOfCSV.length)
     {
         myArr.push(str);
@@ -185,3 +208,19 @@ function getColumns(arr)
     }
     return col;
 }
+
+// Part 4: Sorting and Manipulating Data
+// It is important to know how to work with data in this format, an array of objects, as it is one of the most commonly used data formats in JavaScript.
+// Using array methods, accomplish the following tasks, in order upon the result of Part 3:
+// Remove the last element from the sorted array.
+// Insert the following object at index 1:
+// { id: "48", name: "Barry", occupation: "Runner", age: "25" }
+// Add the following object to the end of the array:
+// { id: "7", name: "Bilbo", occupation: "None", age: "111" }
+// So far, the results should look like this:
+// [{ id: "42", name: "Bruce", occupation: "Knight", age: "41" },
+//  { id: "48", name: "Barry", occupation: "Runner", age: "25" },
+//  { id: "57", name: "Bob", occupation: "Fry Cook", age: "19" },
+//  { id: "63", name: "Blaine", occupation: "Quiz Master", age: "58" },
+//  { id: "7", name: "Bilbo", occupation: "None", age: "111" }]
+// Finally, use the values of each object within the array and the array’s length property to calculate the average age of the group. This calculation should be accomplished using a loop.
