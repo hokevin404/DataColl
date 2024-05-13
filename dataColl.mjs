@@ -184,10 +184,15 @@ for(let i = 0; i < columns; i++)
 // Assign headings as keys to the values in table
 for(let j = 1; j < storedArr.length; j++)
 {
+    // Initialize a temp obj
     let finalobj = {};
+
+    // For loop to go through each object of the index
+    // add key headings from index 0 to each value of table  
     for(let k = 0; k < columns; k++)
         finalobj[storedArr[0][k]] = storedArr[j][k];
-        
+    
+    // Push temp obj holding key:value pairs to final arry 
     finalArr.push(finalobj);
 }
 console.log(finalArr);
@@ -211,16 +216,36 @@ function getColumns(arr)
 
 // Part 4: Sorting and Manipulating Data
 // It is important to know how to work with data in this format, an array of objects, as it is one of the most commonly used data formats in JavaScript.
+//
 // Using array methods, accomplish the following tasks, in order upon the result of Part 3:
-// Remove the last element from the sorted array.
-// Insert the following object at index 1:
-// { id: "48", name: "Barry", occupation: "Runner", age: "25" }
-// Add the following object to the end of the array:
-// { id: "7", name: "Bilbo", occupation: "None", age: "111" }
+//  ~ Remove the last element from the sorted array.
+//  ~ Insert the following object at index 1:
+//      ~ { id: "48", name: "Barry", occupation: "Runner", age: "25" }
+//  ~ Add the following object to the end of the array:
+//      ~ { id: "7", name: "Bilbo", occupation: "None", age: "111" }
+// 
 // So far, the results should look like this:
-// [{ id: "42", name: "Bruce", occupation: "Knight", age: "41" },
-//  { id: "48", name: "Barry", occupation: "Runner", age: "25" },
-//  { id: "57", name: "Bob", occupation: "Fry Cook", age: "19" },
-//  { id: "63", name: "Blaine", occupation: "Quiz Master", age: "58" },
-//  { id: "7", name: "Bilbo", occupation: "None", age: "111" }]
+//      [{ id: "42", name: "Bruce", occupation: "Knight", age: "41" },
+//       { id: "48", name: "Barry", occupation: "Runner", age: "25" },
+//       { id: "57", name: "Bob", occupation: "Fry Cook", age: "19" },
+//       { id: "63", name: "Blaine", occupation: "Quiz Master", age: "58" },
+//       { id: "7", name: "Bilbo", occupation: "None", age: "111" }]
+// 
 // Finally, use the values of each object within the array and the array’s length property to calculate the average age of the group. This calculation should be accomplished using a loop.
+
+//  ~ Remove the last element from the sorted array.
+finalArr.pop();
+console.log(finalArr);
+
+//  ~ Insert the following object at index 1:
+//      ~ { id: "48", name: "Barry", occupation: "Runner", age: "25" }
+let objToAdd = { id: "48", name: "Barry", occupation: "Runner", age: "25" };
+finalArr.splice(1, 0, objToAdd);
+console.log(finalArr);
+
+//  ~ Add the following object to the end of the array:
+//      ~ { id: "7", name: "Bilbo", occupation: "None", age: "111" }
+let objToAddAtEnd = { id: "7", name: "Bilbo", occupation: "None", age: "111" };
+finalArr.push(objToAddAtEnd);
+console.log(finalArr);
+
